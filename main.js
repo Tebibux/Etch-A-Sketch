@@ -15,11 +15,55 @@ var pageTitle = document.createElement('h1');
 pageTitle.innerText = 'Etch-A-Sketch';
 header.appendChild(pageTitle);
 container.appendChild(header);
+
+
+
+
+
 // creating and appeding the board to the container
 var board = document.createElement('div');
 board.id = 'board';
 board.className = 'board';
+	// creating bord contents
+		// creating button list
+var listOfButton = document.createElement('ul');
+var listButton = document.createElement('li');
+listButton.innerText = 'hello';
+listOfButton.appendChild(listButton);
+board.appendChild(listOfButton)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// creating sketchbord
+var sketchboard = document.createElement('div');
+sketchboard.id = 'sketchboard';
+sketchboard.style.height = '100%';
+sketchboard.style.width = '100%';
+sketchboard.style.backgroundColor = 'red';
+board.appendChild(sketchboard)
+
+
+
+
+
+
+
 container.appendChild(board);
+
+
+
+
 
 
 
