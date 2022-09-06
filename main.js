@@ -27,25 +27,36 @@ board.className = 'board';
 	// creating bord contents
 		// creating button list
 var listOfButton = document.createElement('ul');
-var listButton = document.createElement('li');
-listButton.innerText = 'hello';
-listOfButton.appendChild(listButton);
+listOfButton.id = 'listOfButton'
+			// creating lists
+var colorPicker = document.createElement('li');
+colorPicker.innerText = 'colorPicker';
+listOfButton.appendChild(colorPicker);
+var btnRGB = document.createElement('li');
+btnRGB.innerText = 'btnRGB'; 
+listOfButton.appendChild(btnRGB);
+var btnGRAY = document.createElement('li');
+btnGRAY.innerText = 'btnGRAY';
+listOfButton.appendChild(btnGRAY);
+var btnReset = document.createElement('li');
+btnReset.innerText = 'btnReset';
+listOfButton.appendChild(btnReset);
+var inputSize = document.createElement('li');
+inputSize.innerText = 'inputSize';
+listOfButton.appendChild(inputSize);
+var setSize = document.createElement('li');
+setSize.innerText = 'setSize';
+listOfButton.appendChild(setSize);
+
+
+
 board.appendChild(listOfButton)
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-		// creating sketchbord
+// creating sketchbord
 var sketchboard = document.createElement('div');
 sketchboard.id = 'sketchboard';
 sketchboard.style.height = '100%';
