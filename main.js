@@ -20,20 +20,23 @@ container.appendChild(header);
 
 
 
+
+
+
 // creating and appeding the board to the container
 var board = document.createElement('div');
 board.id = 'board';
 board.className = 'board';
-	// creating bord contents
-		// creating button list
+// creating bord contents
+// creating button list
 var listOfButton = document.createElement('ul');
 listOfButton.id = 'listOfButton'
-			// creating lists
+// creating lists
 var colorPicker = document.createElement('li');
 colorPicker.innerText = 'colorPicker';
 listOfButton.appendChild(colorPicker);
 var btnRGB = document.createElement('li');
-btnRGB.innerText = 'btnRGB'; 
+btnRGB.innerText = 'btnRGB';
 listOfButton.appendChild(btnRGB);
 var btnGRAY = document.createElement('li');
 btnGRAY.innerText = 'btnGRAY';
@@ -55,12 +58,24 @@ board.appendChild(listOfButton)
 
 
 
-
+let col = row = 16;
 // creating sketchbord
 var sketchboard = document.createElement('div');
 sketchboard.id = 'sketchboard';
-sketchboard.style.height = '100%';
-sketchboard.style.width = '100%';
+sketchboard.style.height = 'relative';
+sketchboard.style.width = 'relative';
+// setting scketborad element to the sketchboard
+for (let i = 0; i < (col * row); i++) {
+	let sktBox = document.createElement('div');
+	sktBox.className = 'sktBox'
+	sktBox.style.height = '16px';
+	sktBox.style.width = '16px';
+	sktBox.style.backgroundColor = 'yellow';
+	// sktBox.style.border = '1px solid black';
+	sketchboard.appendChild(sktBox);
+}
+
+
 sketchboard.style.backgroundColor = 'red';
 board.appendChild(sketchboard)
 
