@@ -32,12 +32,29 @@ board.className = 'board';
 var listOfButton = document.createElement('ul');
 listOfButton.id = 'listOfButton'
 // creating lists
+// list for color picker
 var colorPicker = document.createElement('li');
-colorPicker.innerText = 'colorPicker';
+// canvas for color picker
+var btnColorPicker = document.createElement('button');
+btnColorPicker.id = 'colorPicker'
+btnColorPicker.innerText = 'Color Picker'
+colorPicker.appendChild(btnColorPicker);
+// after clicking the button it will call the canvas function
+// add color piker and change the size of the color canvas
+// and cavace area will be 4:3 ratio in dimention 
+//
+
 listOfButton.appendChild(colorPicker);
-var btnRGB = document.createElement('li');
-btnRGB.innerText = 'btnRGB';
-listOfButton.appendChild(btnRGB);
+// li for color picker
+var rgbColor = document.createElement('li');
+// button for rgb color 
+// https://dev.to/bhaskar95460442/create-an-html-color-picker-using-javascript-3obm
+var btnRgb = document.createElement('button');
+btnRgb.id = 'btnRgb';
+btnRgb.className = 'btn btnRgb';
+btnRgb.innerText = 'RGB color'
+rgbColor.appendChild(btnRgb);
+listOfButton.appendChild(rgbColor);
 // li for gray family
 var colorGray = document.createElement('li');
 // button for gray family
@@ -82,12 +99,12 @@ board.appendChild(listOfButton)
 
 
 
-let col = 10;
+let col = 16;
 // creating sketchbord
 var sketchboard = document.createElement('div');
 sketchboard.id = 'sketchboard';
-sketchboard.style.width = '400px';
-sketchboard.style.height = '400px';
+sketchboard.style.width = '500px';
+sketchboard.style.height = '500px';
 sketchboard.style.display = 'grid';
 sketchboard.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
 sketchboard.style.gridTemplateRows = `repeat(${col}, 1fr)`;
