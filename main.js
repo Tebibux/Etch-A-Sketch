@@ -44,11 +44,24 @@ listOfButton.appendChild(btnGRAY);
 var btnReset = document.createElement('li');
 btnReset.innerText = 'btnReset';
 listOfButton.appendChild(btnReset);
+// li for input area
 var inputSize = document.createElement('li');
-inputSize.innerText = 'inputSize';
 listOfButton.appendChild(inputSize);
+// li for setting size button
+var input = document.createElement('input');
+input.placeholder = 'Input size under 100';
+input.id = 'inputField';
+input.className = 'inputField';
+inputSize.appendChild(input);
+// li for button
 var setSize = document.createElement('li');
-setSize.innerText = 'setSize';
+
+// set size button here
+var btnSetSize = document.createElement('button');
+btnSetSize.id = 'btnSetSize';
+btnSetSize.className = 'btn btnSetSize';
+btnSetSize.innerText = 'Set Size';
+setSize.appendChild(btnSetSize)
 listOfButton.appendChild(setSize);
 
 
@@ -58,7 +71,7 @@ board.appendChild(listOfButton)
 
 
 
-let col = 16;
+let col = 20;
 // creating sketchbord
 var sketchboard = document.createElement('div');
 sketchboard.id = 'sketchboard';
@@ -71,6 +84,7 @@ sketchboard.style.gridTemplateRows = `repeat(${col}, 1fr)`;
 for (let i = 0; i < (col * col); i++) {
 	let sktBox = document.createElement('div');
 	sktBox.className = 'sktBox'
+	sktBox.style.border = '1px solid #fff'
 	sketchboard.appendChild(sktBox);
 }
 
