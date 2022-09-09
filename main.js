@@ -37,7 +37,7 @@ var colorPicker = document.createElement('li');
 // canvas for color picker
 var btnColorPicker = document.createElement('button');
 btnColorPicker.id = 'colorPicker'
-btnColorPicker.innerText = 'Color Picker'
+btnColorPicker.innerText = 'Pick Color'
 colorPicker.appendChild(btnColorPicker);
 // after clicking the button it will call the canvas function
 // add color piker and change the size of the color canvas
