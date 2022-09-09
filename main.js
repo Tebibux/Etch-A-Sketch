@@ -38,12 +38,24 @@ listOfButton.appendChild(colorPicker);
 var btnRGB = document.createElement('li');
 btnRGB.innerText = 'btnRGB';
 listOfButton.appendChild(btnRGB);
-var btnGRAY = document.createElement('li');
-btnGRAY.innerText = 'btnGRAY';
-listOfButton.appendChild(btnGRAY);
-var btnReset = document.createElement('li');
-btnReset.innerText = 'btnReset';
-listOfButton.appendChild(btnReset);
+// li for gray family
+var colorGray = document.createElement('li');
+// button for gray family
+var btnGray = document.createElement('button');
+btnGray.id = 'btnGray';
+btnGray.className = 'btn btnGray';
+btnGray.innerText = 'Gray color';
+colorGray.appendChild(btnGray);
+listOfButton.appendChild(colorGray);
+// li for reset button
+var reset = document.createElement('li');
+// button for reset
+var btnReset = document.createElement('button');
+btnReset.id = 'btnReset';
+btnReset.className = 'btn btnReset';
+btnReset.innerText = 'Reset';
+reset.appendChild(btnReset);
+listOfButton.appendChild(reset);
 // li for input area
 var inputSize = document.createElement('li');
 listOfButton.appendChild(inputSize);
@@ -55,7 +67,6 @@ input.className = 'inputField';
 inputSize.appendChild(input);
 // li for button
 var setSize = document.createElement('li');
-
 // set size button here
 var btnSetSize = document.createElement('button');
 btnSetSize.id = 'btnSetSize';
@@ -71,7 +82,7 @@ board.appendChild(listOfButton)
 
 
 
-let col = 20;
+let col = 10;
 // creating sketchbord
 var sketchboard = document.createElement('div');
 sketchboard.id = 'sketchboard';
