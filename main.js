@@ -58,20 +58,19 @@ board.appendChild(listOfButton)
 
 
 
-let col = row = 16;
+let col = 16;
 // creating sketchbord
 var sketchboard = document.createElement('div');
 sketchboard.id = 'sketchboard';
-sketchboard.style.height = 'relative';
-sketchboard.style.width = 'relative';
+sketchboard.style.width = '400px';
+sketchboard.style.height = '400px';
+sketchboard.style.display = 'grid';
+sketchboard.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
+sketchboard.style.gridTemplateRows = `repeat(${col}, 1fr)`;
 // setting scketborad element to the sketchboard
-for (let i = 0; i < (col * row); i++) {
+for (let i = 0; i < (col * col); i++) {
 	let sktBox = document.createElement('div');
 	sktBox.className = 'sktBox'
-	sktBox.style.height = '16px';
-	sktBox.style.width = '16px';
-	sktBox.style.backgroundColor = 'yellow';
-	// sktBox.style.border = '1px solid black';
 	sketchboard.appendChild(sktBox);
 }
 
@@ -109,17 +108,6 @@ link.className = 'footer-link';
 link.innerHTML = `<a href="http://github.com/Tebibux/Etch-A-Sketch" target="_blank"><i class="fab fa-github"></i></a>`;
 footer.appendChild(link);
 container.appendChild(footer);
-
-
-
-
-
-
-
-
-
-
-
 
 
 console.log(container);
