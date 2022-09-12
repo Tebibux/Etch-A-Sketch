@@ -38,32 +38,35 @@ var colorPicker = document.createElement('li');
 var btnColorPicker = document.createElement('button');
 btnColorPicker.id = 'colorPicker'
 btnColorPicker.innerText = 'Pick Color'
+btnColorPicker.addEventListener('click', pickColor);
+// choosed color used to hold the vlaue black by defalt
+// changes on change
+let choosedColor = '#000000';
+function pickColor(){
+	console.log('you are here');
+	var inputColor = document.createElement('input');
+	inputColor.id = 'inputColor';
+	inputColor.type = 'color';
+	// chenges the color of chosed color
+	inputColor.onchange = () => {
+		choosedColor = inputColor.value;
+		return choosedColor;
+	}
+	choosedColor = inputColor.value;
+	// inputColor.onchange
+	btnColorPicker.style.display = 'none';	
+	colorPicker.appendChild(inputColor);
+}
+console.log(choosedColor)
 colorPicker.appendChild(btnColorPicker);
 // after clicking the button it will call the canvas function
 // add color piker and change the size of the color canvas
 // and cavace area will be 4:3 ratio in dimention 
 //
-
 listOfButton.appendChild(colorPicker);
 // li for color picker
-var rgbColor = document.createElement('li');
-// button for rgb color 
-// https://dev.to/bhaskar95460442/create-an-html-color-picker-using-javascript-3obm
-var btnRgb = document.createElement('button');
-btnRgb.id = 'btnRgb';
-btnRgb.className = 'btn btnRgb';
-btnRgb.innerText = 'RGB color'
-rgbColor.appendChild(btnRgb);
-listOfButton.appendChild(rgbColor);
-// li for gray family
-var colorGray = document.createElement('li');
-// button for gray family
-var btnGray = document.createElement('button');
-btnGray.id = 'btnGray';
-btnGray.className = 'btn btnGray';
-btnGray.innerText = 'Gray color';
-colorGray.appendChild(btnGray);
-listOfButton.appendChild(colorGray);
+
+
 // li for reset button
 var reset = document.createElement('li');
 // button for reset

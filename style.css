@@ -46,6 +46,9 @@ ul {
 	justify-content: center;
 	list-style: none;
 }
+#inputColor{
+	width: 50%;
+}
 
 ul li {
 	height: 40px;
