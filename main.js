@@ -1,3 +1,7 @@
+// global varialbe 
+let col = 16;
+let choosedColor = '#000000';
+
 // Creating the page structure
 // main container
 var mianContainer = document.getElementById('main-container');
@@ -17,12 +21,6 @@ header.appendChild(pageTitle);
 container.appendChild(header);
 
 
-
-
-
-
-
-
 // creating and appeding the board to the container
 var board = document.createElement('div');
 board.id = 'board';
@@ -33,6 +31,7 @@ var listOfButton = document.createElement('ul');
 listOfButton.id = 'listOfButton'
 // creating lists
 // list for color picker
+// li for color picker
 var colorPicker = document.createElement('li');
 // canvas for color picker
 var btnColorPicker = document.createElement('button');
@@ -41,9 +40,8 @@ btnColorPicker.innerText = 'Pick Color'
 btnColorPicker.addEventListener('click', pickColor);
 // choosed color used to hold the vlaue black by defalt
 // changes on change
-let choosedColor = '#000000';
 function pickColor(){
-	console.log('you are here');
+	// console.log('you are here @ color picker function!');
 	var inputColor = document.createElement('input');
 	inputColor.id = 'inputColor';
 	inputColor.type = 'color';
@@ -60,22 +58,8 @@ function pickColor(){
 console.log(choosedColor)
 colorPicker.appendChild(btnColorPicker);
 // after clicking the button it will call the canvas function
-// add color piker and change the size of the color canvas
-// and cavace area will be 4:3 ratio in dimention 
-//
 listOfButton.appendChild(colorPicker);
-// li for color picker
 
-
-// li for reset button
-var reset = document.createElement('li');
-// button for reset
-var btnReset = document.createElement('button');
-btnReset.id = 'btnReset';
-btnReset.className = 'btn btnReset';
-btnReset.innerText = 'Reset';
-reset.appendChild(btnReset);
-listOfButton.appendChild(reset);
 // li for input area
 var inputSize = document.createElement('li');
 listOfButton.appendChild(inputSize);
@@ -96,13 +80,26 @@ setSize.appendChild(btnSetSize)
 listOfButton.appendChild(setSize);
 
 
+// li for reset button
+var reset = document.createElement('li');
+// button for reset
+var btnReset = document.createElement('button');
+btnReset.id = 'btnReset';
+btnReset.className = 'btn btnReset';
+btnReset.innerText = 'Reset';
+reset.appendChild(btnReset);
+listOfButton.appendChild(reset);
 
+
+
+
+// append the list to the main board
 board.appendChild(listOfButton)
 
 
 
 
-let col = 16;
+
 // creating sketchbord
 var sketchboard = document.createElement('div');
 sketchboard.id = 'sketchboard';
