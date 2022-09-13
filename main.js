@@ -1,5 +1,5 @@
 // global varialbe 
-let col = 16;
+let col = 5;
 let choosedColor = '#000000';
 
 // Creating the page structure
@@ -21,12 +21,16 @@ header.appendChild(pageTitle);
 container.appendChild(header);
 
 
+
+
 // creating and appeding the board to the container
 var board = document.createElement('div');
 board.id = 'board';
 board.className = 'board';
 // creating bord contents
 // creating button list
+
+
 var listOfButton = document.createElement('ul');
 listOfButton.id = 'listOfButton'
 // creating lists
@@ -40,7 +44,7 @@ btnColorPicker.innerText = 'Pick Color'
 btnColorPicker.addEventListener('click', pickColor);
 // choosed color used to hold the vlaue black by defalt
 // changes on change
-function pickColor(){
+function pickColor() {
 	// console.log('you are here @ color picker function!');
 	var inputColor = document.createElement('input');
 	inputColor.id = 'inputColor';
@@ -52,10 +56,9 @@ function pickColor(){
 	}
 	choosedColor = inputColor.value;
 	// inputColor.onchange
-	btnColorPicker.style.display = 'none';	
+	btnColorPicker.style.display = 'none';
 	colorPicker.appendChild(inputColor);
 }
-console.log(choosedColor)
 colorPicker.appendChild(btnColorPicker);
 // after clicking the button it will call the canvas function
 listOfButton.appendChild(colorPicker);
@@ -69,6 +72,12 @@ input.placeholder = 'Input size under 100';
 input.id = 'inputField';
 input.className = 'inputField';
 inputSize.appendChild(input);
+
+
+
+
+
+
 // li for button
 var setSize = document.createElement('li');
 // set size button here
@@ -76,6 +85,38 @@ var btnSetSize = document.createElement('button');
 btnSetSize.id = 'btnSetSize';
 btnSetSize.className = 'btn btnSetSize';
 btnSetSize.innerText = 'Set Size';
+input.addEventListener('change', () => { console.log(input.value) });
+btnSetSize.addEventListener('click', () => {
+	if ((Number.isInteger(parseInt(input.value)))) {
+		// ristrict the range
+		if (input.value > 100) alert('Must be less than 100');
+		else if (input.value < 1) alert('Must be greater than 0');
+		// creating sketchbord again if the condition is satfied
+		else {
+			sketchboard.style.display = 'none'
+			var newSketchboard = document.createElement('div');
+			newSketchboard.id = 'newSketchboard';
+			newSketchboard.style.width = '500px';
+			newSketchboard.style.height = '500px';
+			newSketchboard.style.display = 'grid';
+			newSketchboard.style.gridTemplateColumns = `repeat(${input.value}, 1fr)`;
+			newSketchboard.style.gridTemplateRows = `repeat(${input.value}, 1fr)`;
+			// setting scketborad element to the sketchboard
+			for (let i = 0; i < (input.value * input.value); i++) {
+				let sktBox = document.createElement('div');
+				sktBox.className = 'sktBox';
+				sktBox.id = `sktBox-${i}`;
+				sktBox.style.border = '1px solid #fff';
+				newSketchboard.appendChild(sktBox);
+			}
+			newSketchboard.style.backgroundColor = 'red';
+			board.appendChild(newSketchboard);
+		}
+
+	}
+	input.disabled = true;
+});
+
 setSize.appendChild(btnSetSize)
 listOfButton.appendChild(setSize);
 
@@ -98,31 +139,30 @@ board.appendChild(listOfButton)
 
 
 
-
-
-// creating sketchbord
 var sketchboard = document.createElement('div');
-sketchboard.id = 'sketchboard';
-sketchboard.style.width = '500px';
-sketchboard.style.height = '500px';
-sketchboard.style.display = 'grid';
-sketchboard.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
-sketchboard.style.gridTemplateRows = `repeat(${col}, 1fr)`;
-// setting scketborad element to the sketchboard
-for (let i = 0; i < (col * col); i++) {
-	let sktBox = document.createElement('div');
-	sktBox.className = 'sktBox'
-	sktBox.style.border = '1px solid #fff'
-	sketchboard.appendChild(sktBox);
+function sketchBoard() {
+	// creating default sketchbord 
+
+	sketchboard.id = 'sketchboard';
+	sketchboard.style.width = '500px';
+	sketchboard.style.height = '500px';
+	sketchboard.style.display = 'grid';
+	sketchboard.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
+	sketchboard.style.gridTemplateRows = `repeat(${col}, 1fr)`;
+	// setting scketborad element to the sketchboard
+	for (let i = 0; i < (col ** 2); i++) {
+		let sktBox = document.createElement('div');
+		sktBox.className = 'sktBox';
+		sktBox.id = `sktBox-${i}`;
+		sktBox.style.border = '1px solid #fff';
+		sketchboard.appendChild(sktBox);
+	}
+
 }
-
-
+// calling the initial board size
+sketchBoard();
 sketchboard.style.backgroundColor = 'red';
 board.appendChild(sketchboard)
-
-
-
-
 
 
 

@@ -46,7 +46,8 @@ ul {
 	justify-content: center;
 	list-style: none;
 }
-#inputColor{
+
+#inputColor {
 	width: 50%;
 }
 
@@ -58,9 +59,11 @@ ul li {
 	align-items: center;
 	justify-content: center;
 }
-.btn{
+
+.btn {
 	font-weight: bold;
 }
+
 #colorPicker,
 #btnRgb,
 #btnGray,
@@ -71,7 +74,8 @@ ul li {
 	height: 100%;
 	border-radius: 5px;
 }
-#inputField{
+
+#inputField {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -81,6 +85,11 @@ ul li {
 
 
 #sketchboard {
+	width: 66.67%;
+	margin-right: 45px;
+}
+
+#newSketchboard {
 	width: 66.67%;
 	margin-right: 45px;
 }
