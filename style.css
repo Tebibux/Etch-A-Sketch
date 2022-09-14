@@ -75,14 +75,10 @@ ul li {
 	border-radius: 5px;
 }
 
-#inputField {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+#inputField{
+display: flex;
+justify-content: center;
 }
-
-
-
 
 #sketchboard {
 	width: 66.67%;

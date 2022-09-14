@@ -1,6 +1,8 @@
 // global varialbe 
 let col = 5;
 let choosedColor = '#000000';
+var newSketchboard = document.createElement('div');
+
 
 // Creating the page structure
 // main container
@@ -24,12 +26,11 @@ container.appendChild(header);
 
 
 // creating and appeding the board to the container
-var board = document.createElement('div');
+let board = document.createElement('div');
 board.id = 'board';
 board.className = 'board';
 // creating bord contents
 // creating button list
-
 
 var listOfButton = document.createElement('ul');
 listOfButton.id = 'listOfButton'
@@ -73,28 +74,15 @@ input.id = 'inputField';
 input.className = 'inputField';
 inputSize.appendChild(input);
 
-
-
-
-
-
-// li for button
-var setSize = document.createElement('li');
-// set size button here
-var btnSetSize = document.createElement('button');
-btnSetSize.id = 'btnSetSize';
-btnSetSize.className = 'btn btnSetSize';
-btnSetSize.innerText = 'Set Size';
-input.addEventListener('change', () => { console.log(input.value) });
-btnSetSize.addEventListener('click', () => {
+// set size function
+function setSizeFuntion (){
 	if ((Number.isInteger(parseInt(input.value)))) {
 		// ristrict the range
 		if (input.value > 100) alert('Must be less than 100');
 		else if (input.value < 1) alert('Must be greater than 0');
-		// creating sketchbord again if the condition is satfied
+		// creating sketchbord  if the condition is satfied
 		else {
-			sketchboard.style.display = 'none'
-			var newSketchboard = document.createElement('div');
+			// board.removeChild(sketchBoard);
 			newSketchboard.id = 'newSketchboard';
 			newSketchboard.style.width = '500px';
 			newSketchboard.style.height = '500px';
@@ -114,8 +102,21 @@ btnSetSize.addEventListener('click', () => {
 		}
 
 	}
+	document.getElementById('btnSetSize').onclick = null;
+
+	btnSetSize.disabled = true;
 	input.disabled = true;
-});
+	btnReset.disabled = false;
+}
+// li for button
+var setSize = document.createElement('li');
+// set size button here
+var btnSetSize = document.createElement('button');
+btnSetSize.id = 'btnSetSize';
+btnSetSize.className = 'btn btnSetSize';
+btnSetSize.innerText = 'Set Size';
+input.addEventListener('change', () => { console.log(input.value) });
+btnSetSize.addEventListener('click', setSizeFuntion);
 
 setSize.appendChild(btnSetSize)
 listOfButton.appendChild(setSize);
@@ -128,6 +129,16 @@ var btnReset = document.createElement('button');
 btnReset.id = 'btnReset';
 btnReset.className = 'btn btnReset';
 btnReset.innerText = 'Reset';
+btnReset.addEventListener('click', () => {
+	console.log('Reset touched');
+	document.querySelector('#newSketchboard');
+	board.removeChild(board.newSketchboard);
+	board.removeChild(board.sketchboard);
+	// btnReset.disabled = true;
+	input.disabled = false;
+	btnSetSize.disabled = false;
+
+});
 reset.appendChild(btnReset);
 listOfButton.appendChild(reset);
 
@@ -142,7 +153,6 @@ board.appendChild(listOfButton)
 var sketchboard = document.createElement('div');
 function sketchBoard() {
 	// creating default sketchbord 
-
 	sketchboard.id = 'sketchboard';
 	sketchboard.style.width = '500px';
 	sketchboard.style.height = '500px';
