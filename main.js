@@ -1,9 +1,15 @@
 // Global Variables
+// default grid element
+let col = 16;
 // main-container
 var mainContainer = document.getElementById('main-container');
 var container = document.createElement('div');
 // used to hold choosed color
 let choosedColor = '#000000';
+// creating default board
+var defBoard = document.createElement('div');
+// creating temp board
+var tempBoard = document.createElement('div');
 
 
 // header, board-body, footer (main stracture of the page)
@@ -64,6 +70,7 @@ listSet.className = 'list list-set';
 var btnSet = document.createElement('button');
 btnSet.className = 'list-element';
 btnSet.innerText = 'Set Size';
+btnSet.addEventListener('click', setSize);
 listSet.appendChild(btnSet);
 // appending list set
 list.appendChild(listSet);
@@ -75,12 +82,60 @@ var btnReset = document.createElement('button');
 btnReset.id = 'btnReset';
 btnReset.className = 'list-element';
 btnReset.innerText = 'Reset';
+btnReset.addEventListener('click', reSet);
 listReset.appendChild(btnReset);
 // appending list reset
 list.appendChild(listReset);
 
 
 
+
+
+// functions
+function defaultBoard() {
+	defBoard.id = 'defaultBoard';
+	defBoard.className = 'defBoard board';
+	defBoard.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
+	defBoard.style.gridTemplateRows = `repeat(${col}, 1fr)`;
+	for (let i = 0; i < (col ** 2); i++) {
+		let sktBox = document.createElement('div');
+		sktBox.className = 'sktBox';
+		sktBox.id = `sktBox-${i}`;
+		sktBox.style.border = '1px solid #fff';
+		defBoard.appendChild(sktBox);
+	}
+};
+defaultBoard();
+
+function setSize() {
+	if ((Number.isInteger(parseInt(inputSize.value)))) {
+		// restricting the area range
+		if (inputSize.value > 100) alert("Size must be less than 100");
+		else if (inputSize.value < 1) alert("Size must be than 0");
+		else {
+			// remove the existing board
+			board.removeChild(defBoard);
+			console.log('here worked');
+			tempBoard.id = 'tempBoard';
+			tempBoard.className = 'tempBoard board';
+			tempBoard.style.gridTemplateColumns = `repeat(${inputSize.value}, 1fr)`;
+			tempBoard.style.gridTemplateRows = `repeat(${inputSize.value}, 1fr)`;
+			for (let i = 0; i < ((inputSize.value) ** 2); i++) {
+				let sktBox = document.createElement('div');
+				sktBox.className = 'sktBox';
+				sktBox.id = `sktBox-${i}`;
+				sktBox.style.border = '1px solid #fff';
+				tempBoard.appendChild(sktBox);
+			}
+			console.log(tempBoard)
+			// reappending with the new value
+			board.appendChild(tempBoard);
+		}
+	}
+};
+function onHorver() { return null };
+function reSet() { console.log('you are at reset') };
+// end of functions
 
 
 // footer elements
@@ -94,7 +149,8 @@ link.innerHTML = `<a href="http://github.com/Tebibux/Etch-A-Sketch" target="_bla
 footer.appendChild(link);
 
 
-
+// appending default sub board
+board.appendChild(defBoard);
 // appeding element of the board-body 
 boardBody.appendChild(list);
 // appeding element of the board-body 
