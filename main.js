@@ -1,196 +1,89 @@
-// global varialbe 
-let col = 5;
-let choosedColor = '#000000';
-var newSketchboard = document.createElement('div');
-
-
-// Creating the page structure
-// main container
-var mianContainer = document.getElementById('main-container');
-// container
+// Global Variables
+// main-container
+var mainContainer = document.getElementById('main-container');
 var container = document.createElement('div');
-container.id = 'container';
-container.className = 'container';
-mianContainer.appendChild(container);
-// creating and appeding the header to container
+// used to hold choosed color
+let choosedColor = '#000000';
+
+
+// header, board-body, footer (main stracture of the page)
 var header = document.createElement('div');
+var boardBody = document.createElement('div');
+var footer = document.createElement('footer');
+var list = document.createElement('ul');
+var board = document.createElement('div');
+
+// title of the page
+var title = document.createElement('h1');
+
+// giving id for variables and class
+container.id = 'sub-container';
 header.id = 'header';
-header.className = 'header';
-// appending the title of the page on header
-var pageTitle = document.createElement('h1');
-pageTitle.innerText = 'Etch-A-Sketch';
-header.appendChild(pageTitle);
-container.appendChild(header);
+boardBody.id = 'boardBody';
+footer.id = 'footer';
+title.innerText = 'Etch-A-Sketch';
 
-
-
-
-// creating and appeding the board to the container
-let board = document.createElement('div');
+// board property
 board.id = 'board';
 board.className = 'board';
-// creating bord contents
-// creating button list
-
-var listOfButton = document.createElement('ul');
-listOfButton.id = 'listOfButton'
-// creating lists
-// list for color picker
-// li for color picker
-var colorPicker = document.createElement('li');
-// canvas for color picker
-var btnColorPicker = document.createElement('button');
-btnColorPicker.id = 'colorPicker'
-btnColorPicker.innerText = 'Pick Color'
-btnColorPicker.addEventListener('click', pickColor);
-// choosed color used to hold the vlaue black by defalt
-// changes on change
-function pickColor() {
-	// console.log('you are here @ color picker function!');
-	var inputColor = document.createElement('input');
-	inputColor.id = 'inputColor';
-	inputColor.type = 'color';
-	// chenges the color of chosed color
-	inputColor.onchange = () => {
-		choosedColor = inputColor.value;
-		return choosedColor;
-	}
-	choosedColor = inputColor.value;
-	// inputColor.onchange
-	btnColorPicker.style.display = 'none';
-	colorPicker.appendChild(inputColor);
-}
-colorPicker.appendChild(btnColorPicker);
-// after clicking the button it will call the canvas function
-listOfButton.appendChild(colorPicker);
-
-// li for input area
-var inputSize = document.createElement('li');
-listOfButton.appendChild(inputSize);
-// li for setting size button
-var input = document.createElement('input');
-input.placeholder = 'Input size under 100';
-input.id = 'inputField';
-input.className = 'inputField';
-inputSize.appendChild(input);
-
-// set size function
-function setSizeFuntion (){
-	if ((Number.isInteger(parseInt(input.value)))) {
-		// ristrict the range
-		if (input.value > 100) alert('Must be less than 100');
-		else if (input.value < 1) alert('Must be greater than 0');
-		// creating sketchbord  if the condition is satfied
-		else {
-			// board.removeChild(sketchBoard);
-			newSketchboard.id = 'newSketchboard';
-			newSketchboard.style.width = '500px';
-			newSketchboard.style.height = '500px';
-			newSketchboard.style.display = 'grid';
-			newSketchboard.style.gridTemplateColumns = `repeat(${input.value}, 1fr)`;
-			newSketchboard.style.gridTemplateRows = `repeat(${input.value}, 1fr)`;
-			// setting scketborad element to the sketchboard
-			for (let i = 0; i < (input.value * input.value); i++) {
-				let sktBox = document.createElement('div');
-				sktBox.className = 'sktBox';
-				sktBox.id = `sktBox-${i}`;
-				sktBox.style.border = '1px solid #fff';
-				newSketchboard.appendChild(sktBox);
-			}
-			newSketchboard.style.backgroundColor = 'red';
-			board.appendChild(newSketchboard);
-		}
-
-	}
-	document.getElementById('btnSetSize').onclick = null;
-
-	btnSetSize.disabled = true;
-	input.disabled = true;
-	btnReset.disabled = false;
-}
-// li for button
-var setSize = document.createElement('li');
-// set size button here
-var btnSetSize = document.createElement('button');
-btnSetSize.id = 'btnSetSize';
-btnSetSize.className = 'btn btnSetSize';
-btnSetSize.innerText = 'Set Size';
-input.addEventListener('change', () => { console.log(input.value) });
-btnSetSize.addEventListener('click', setSizeFuntion);
-
-setSize.appendChild(btnSetSize)
-listOfButton.appendChild(setSize);
+// appending the title to the header
+header.appendChild(title);
 
 
-// li for reset button
-var reset = document.createElement('li');
-// button for reset
+
+// list and list elements 
+// element includes all btn and input elements
+// and appending to the respective parent
+// list element color
+var listColor = document.createElement('li');
+listColor.className = 'list list-color';
+// creating button for picking a color
+var inputColor = document.createElement('input');
+inputColor.id = 'inputColor';
+inputColor.className = 'list-element';
+inputColor.type = 'color';
+inputColor.onchange = () => { return (choosedColor = inputColor.value) };
+listColor.appendChild(inputColor);
+// appending list color
+list.appendChild(listColor);
+//  list element input
+var listInput = document.createElement('li');
+listInput.className = 'list list-input';
+// creating input field for the user input
+var inputSize = document.createElement('input');
+inputSize.id = 'inputSize';
+inputSize.className = 'list-element';
+inputSize.placeholder = 'Insert size';
+listInput.appendChild(inputSize);
+// appending list input
+list.appendChild(listInput);
+// list element set
+var listSet = document.createElement('li');
+listSet.className = 'list list-set';
+// creating btnSetSize
+var btnSet = document.createElement('button');
+btnSet.className = 'list-element';
+btnSet.innerText = 'Set Size';
+listSet.appendChild(btnSet);
+// appending list set
+list.appendChild(listSet);
+// list element reset
+var listReset = document.createElement('li');
+listReset.className = 'list list-reset';
+// creating btnReset
 var btnReset = document.createElement('button');
 btnReset.id = 'btnReset';
-btnReset.className = 'btn btnReset';
+btnReset.className = 'list-element';
 btnReset.innerText = 'Reset';
-btnReset.addEventListener('click', () => {
-	console.log('Reset touched');
-	document.querySelector('#newSketchboard');
-	board.removeChild(board.newSketchboard);
-	board.removeChild(board.sketchboard);
-	// btnReset.disabled = true;
-	input.disabled = false;
-	btnSetSize.disabled = false;
-
-});
-reset.appendChild(btnReset);
-listOfButton.appendChild(reset);
-
-
-
-
-// append the list to the main board
-board.appendChild(listOfButton)
-
-
-
-var sketchboard = document.createElement('div');
-function sketchBoard() {
-	// creating default sketchbord 
-	sketchboard.id = 'sketchboard';
-	sketchboard.style.width = '500px';
-	sketchboard.style.height = '500px';
-	sketchboard.style.display = 'grid';
-	sketchboard.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
-	sketchboard.style.gridTemplateRows = `repeat(${col}, 1fr)`;
-	// setting scketborad element to the sketchboard
-	for (let i = 0; i < (col ** 2); i++) {
-		let sktBox = document.createElement('div');
-		sktBox.className = 'sktBox';
-		sktBox.id = `sktBox-${i}`;
-		sktBox.style.border = '1px solid #fff';
-		sketchboard.appendChild(sktBox);
-	}
-
-}
-// calling the initial board size
-sketchBoard();
-sketchboard.style.backgroundColor = 'red';
-board.appendChild(sketchboard)
-
-
-
-container.appendChild(board);
+listReset.appendChild(btnReset);
+// appending list reset
+list.appendChild(listReset);
 
 
 
 
 
-
-
-
-
-// creating and appeding the footer to the container
-var footer = document.createElement('div');
-footer.id = 'footer';
-footer.className = 'footer';
-// footer content
+// footer elements
 var text = document.createElement('div');
 text.className = 'footer-text'
 text.innerHTML = `<h4>TheOdinProject ${new Date().getFullYear()}  Tebibux &copy</h4>`;
@@ -199,7 +92,16 @@ var link = document.createElement('div');
 link.className = 'footer-link';
 link.innerHTML = `<a href="http://github.com/Tebibux/Etch-A-Sketch" target="_blank"><i class="fab fa-github"></i></a>`;
 footer.appendChild(link);
+
+
+
+// appeding element of the board-body 
+boardBody.appendChild(list);
+// appeding element of the board-body 
+boardBody.appendChild(board);
+// appending sub element to sub-containerall varialbe 
+container.appendChild(header);
+container.appendChild(boardBody);
 container.appendChild(footer);
-
-
-console.log(container);
+// appending sub container to the main container
+mainContainer.appendChild(container);
