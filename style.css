@@ -70,12 +70,16 @@ ul li {
 }
 
 .board {
-	width: 500px;
-	height: 500px;
+	width: 600px;
+	height: 600px;
 	background-color: rgb(255, 255, 255);
 	box-shadow: 42px 42px 29px -27px rgba(110, 159, 161, 0.4);
 	-webkit-box-shadow: 42px 42px 29px -27px rgba(110, 159, 161, 0.4);
 	-moz-box-shadow: 42px 42px 29px -27px rgba(110, 159, 161, 0.4);
+}
+
+button{
+	font-weight: bold;
 }
 
 #defaultBoard,
@@ -83,7 +87,8 @@ ul li {
 	width: 100%;
 	height: 100%;
 	display: grid;
-	background-color: yellow;
+	color: #0000002f;
+	background-color: rgb(255, 255, 255);
 }
 
 #footer {

@@ -48,7 +48,7 @@ var inputColor = document.createElement('input');
 inputColor.id = 'inputColor';
 inputColor.className = 'list-element';
 inputColor.type = 'color';
-inputColor.onchange = () => { return (choosedColor = inputColor.value) };
+inputColor.onchange = () => { (choosedColor = inputColor.value) };
 listColor.appendChild(inputColor);
 // appending list color
 list.appendChild(listColor);
@@ -82,13 +82,12 @@ var btnReset = document.createElement('button');
 btnReset.id = 'btnReset';
 btnReset.className = 'list-element';
 btnReset.innerText = 'Reset';
-btnReset.addEventListener('click', reSet);
+// reload the page when reset 
+// reload from the catch no data sent to the server
+btnReset.addEventListener('click', () => location.reload());
 listReset.appendChild(btnReset);
 // appending list reset
 list.appendChild(listReset);
-
-
-
 
 
 // functions
@@ -101,7 +100,7 @@ function defaultBoard() {
 		let sktBox = document.createElement('div');
 		sktBox.className = 'sktBox';
 		sktBox.id = `sktBox-${i}`;
-		sktBox.style.border = '1px solid #fff';
+		sktBox.style.border = '1px solid #0000002f';
 		defBoard.appendChild(sktBox);
 	}
 };
@@ -115,7 +114,6 @@ function setSize() {
 		else {
 			// remove the existing board
 			board.removeChild(defBoard);
-			console.log('here worked');
 			tempBoard.id = 'tempBoard';
 			tempBoard.className = 'tempBoard board';
 			tempBoard.style.gridTemplateColumns = `repeat(${inputSize.value}, 1fr)`;
@@ -124,19 +122,25 @@ function setSize() {
 				let sktBox = document.createElement('div');
 				sktBox.className = 'sktBox';
 				sktBox.id = `sktBox-${i}`;
-				sktBox.style.border = '1px solid #fff';
+				sktBox.style.border = '1px solid #0000002f';
 				tempBoard.appendChild(sktBox);
 			}
-			console.log(tempBoard)
 			// reappending with the new value
 			board.appendChild(tempBoard);
 		}
 	}
 };
-function onHorver() { return null };
-function reSet() { console.log('you are at reset') };
-// end of functions
+function onHorver() {
+	const changeColor = document.getElementsByClassName('board');
+	Array.from(changeColor).forEach(function (element) {
+		item = this.element;
+		item.style.backgroundColor = 'choosedColor';
+	});
+};
 
+onHorver();
+
+// end of functions
 
 // footer elements
 var text = document.createElement('div');
