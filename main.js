@@ -100,6 +100,7 @@ function defaultBoard() {
 		let sktBox = document.createElement('div');
 		sktBox.className = 'sktBox';
 		sktBox.id = `sktBox-${i}`;
+		sktBox.addEventListener('mouseover', sketchIt);
 		sktBox.style.border = '1px solid #0000002f';
 		defBoard.appendChild(sktBox);
 	}
@@ -110,7 +111,7 @@ function setSize() {
 	if ((Number.isInteger(parseInt(inputSize.value)))) {
 		// restricting the area range
 		if (inputSize.value > 100) alert("Size must be less than 100");
-		else if (inputSize.value < 1) alert("Size must be than 0");
+		else if (inputSize.value < 1) alert("Size must be greater than 0");
 		else {
 			// remove the existing board
 			board.removeChild(defBoard);
@@ -122,6 +123,7 @@ function setSize() {
 				let sktBox = document.createElement('div');
 				sktBox.className = 'sktBox';
 				sktBox.id = `sktBox-${i}`;
+				sktBox.addEventListener('mouseover', sketchIt);
 				sktBox.style.border = '1px solid #0000002f';
 				tempBoard.appendChild(sktBox);
 			}
@@ -130,15 +132,11 @@ function setSize() {
 		}
 	}
 };
-function onHorver() {
-	const changeColor = document.getElementsByClassName('board');
-	Array.from(changeColor).forEach(function (element) {
-		item = this.element;
-		item.style.backgroundColor = 'choosedColor';
-	});
+// sketch when hover
+function sketchIt() {
+	this.style.backgroundColor =  choosedColor;
 };
 
-onHorver();
 
 // end of functions
 
