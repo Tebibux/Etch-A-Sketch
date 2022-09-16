@@ -70,8 +70,8 @@ ul li {
 }
 
 .board {
-	width: 600px;
-	height: 600px;
+	width: 450px;
+	height: 450px;
 	background-color: rgb(255, 255, 255);
 	box-shadow: 42px 42px 29px -27px rgba(110, 159, 161, 0.4);
 	-webkit-box-shadow: 42px 42px 29px -27px rgba(110, 159, 161, 0.4);
