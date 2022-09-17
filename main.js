@@ -22,10 +22,6 @@ var board = document.createElement('div');
 // title of the page
 var title = document.createElement('h1');
 
-// check if the mouse is on or of
-let mouseDown = false
-document.body.onmousedown = () => (mouseDown = true)
-document.body.onmouseup = () => (mouseDown = false)
 
 // giving id for variables and class
 container.id = 'sub-container';
