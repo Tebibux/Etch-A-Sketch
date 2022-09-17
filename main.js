@@ -100,6 +100,7 @@ function defaultBoard() {
 		let sktBox = document.createElement('div');
 		sktBox.className = 'sktBox';
 		sktBox.id = `sktBox-${i}`;
+		sktBox.addEventListener('mouseover', sketchIt);
 		sktBox.addEventListener('mousedown', sketchIt);
 		sktBox.style.border = '1px solid #0000002f';
 		defBoard.appendChild(sktBox);
