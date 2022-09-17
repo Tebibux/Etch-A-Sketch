@@ -99,9 +99,9 @@ function defaultBoard() {
 	for (let i = 0; i < (col ** 2); i++) {
 		let sktBox = document.createElement('div');
 		sktBox.className = 'sktBox';
-		sktBox.id = `sktBox-${i}`;
-		sktBox.addEventListener('mousedown', sketchIt);
-		sktBox.addEventListener('mouseover', sketchIt);		
+		sktBox.id = `sktBox-${i}`;		
+		sktBox.addEventListener('mouseover', sketchIt);
+		sktBox.addEventListener('mousedown', sketchIt);	
 		sktBox.style.border = '1px solid #0000002f';
 		defBoard.appendChild(sktBox);
 	}
@@ -124,7 +124,8 @@ function setSize() {
 				let sktBox = document.createElement('div');
 				sktBox.className = 'sktBox';
 				sktBox.id = `sktBox-${i}`;
-				sktBox.addEventListener('mousedown', sketchIt);
+				sktBox.addEventListener('mouseover', sketchIt);
+				sktBox.addEventListener('mousedown', sketchIt);	
 				sktBox.style.border = '1px solid #0000002f';
 				tempBoard.appendChild(sktBox);
 			}
